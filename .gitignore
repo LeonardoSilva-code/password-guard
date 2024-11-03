@@ -28,6 +28,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+password_manager.spec
 MANIFEST
 
 # PyInstaller
