@@ -71,6 +71,18 @@ class FileEncryptor:
             print(f"An unexpected error occurred: {e}")
             raise
 
+    def delete_key_value_pair(self, key: str):
+        pairs = self.get_all_pairs()
+    
+        if key in pairs:
+            del pairs[key]
+            updated_content = "\n".join(f"{k}:{v}" for k, v in pairs.items())
+            self._encrypt_content(updated_content)
+            print(f"'{key}' successfully removed.")
+        else:
+            print(f"'{key}' not found.")
+
+
     def add_key_value_pair(self, key: str, value: str):
         if os.path.exists(self.encrypted_file_path):
             current_content = self._decrypt_content()
